@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What is a hash pointer?",
+    "answer": "A hash pointer is a reference to data along with the hash of that data. Each block contains its own block data and the hash of the previous block.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.7 (0.576)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.25 (0.411)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.8 (0.400)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.8 (0.376)"
+    ]
+  },
+  {
+    "question": "Why is recalculating hashes not enough to rewrite the blockchain?",
+    "answer": "Recalculating hashes alone is not sufficient to rewrite the blockchain because:\n\n1. An attacker can modify the transactions within a block without changing the hash values.\n\n2. Even after recalculating the hashes, the altered chain would fail to meet the integrity requirements set by the blockchain's consensus mechanisms (e.g., Proof-of-Work, Proof-of-Stake).\n\n3. To be accepted by the network, the attacker needs to convince other nodes to validate their modified chain as valid.\n\n4. In Proof-of-Work systems, the attacker might have to redo the work required for creating the original block and subsequent ones.\n\n5. In Proof-of-Stake or Byzantine Fault-Tolerant systems, the attacker would need to generate a longer chain with more accumulated work compared to the honest chain.\n\nIn essence, while recalculating hashes ensures that each block's hash matches the expected value, it doesn't address the fundamental issue of altering the entire chain structure and convincing the network to accept this new version.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.8 (0.580)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.2 (0.496)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.7 (0.430)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.7 (0.403)"
+    ]
+  },
+  {
+    "question": "What is the difference between hashing and encryption?",
+    "answer": "Hashing and encryption are fundamentally different processes:\n\n1. **Encryption** involves transforming readable plaintext into ciphertext using a key. The goal here is to protect the confidentiality of the data by making it unreadable without the proper decryption key.\n\n2. **Hashing**, on the other hand, converts input data (plaintext) into a fixed-size string of characters (ciphertext). Unlike encryption, hashing doesn't attempt to decrypt the original data; instead, it ensures data integrity and uniqueness through a mathematical transformation.\n\nIn summary, while encryption aims at hiding the content of the data, hashing focuses on verifying the integrity and uniqueness of the data.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.9 (0.566)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.25 (0.461)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.2 (0.422)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.7 (0.410)"
+    ]
+  },
+  {
+    "question": "How many Byzantine nodes can a 10-node PBFT network tolerate?",
+    "answer": "A 10-node PBFT network can tolerate up to 3 Byzantine nodes, according to the given information.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.14 (0.833)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.2 (0.663)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.16 (0.648)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.2 (0.643)"
+    ]
+  },
+  {
+    "question": "What is the minimum number of nodes needed to tolerate 4 Byzantine nodes?",
+    "answer": "The minimum number of nodes to tolerate 4 Byzantine nodes is 13. This assumption includes authenticated messages and eventual network synchrony for liveness.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.14 (0.685)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.2 (0.645)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.2 (0.594)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.15 (0.498)"
+    ]
+  },
+  {
+    "question": "What is the Checks-Effects-Interactions pattern?",
+    "answer": "The Checks-Effects-Interactions pattern involves three main steps:\n\n1. **Checks**: This step includes verifying permissions, checking balances, ensuring limits are met, and validating input values.\n\n2. **Effects**: In this phase, the contract's own state is updated.\n\n3. **Interactions**: Only after these effects have been applied do you call an external contract or send Ether.\n\nAn example of a safer withdrawal function follows the CEI pattern:\n\n```solidity\n1 mapping(address => uint256) public balances;\n2 \n3 function withdraw(uint256 amount) external {\n4 require(amount > 0, \"Amount must be positive\");\n5 require(balances[msg.sender] >= amount, \"Insufficient balance\");\n6 // Effects: update state before the external call.\n```\n\nIn summary, the Checks-Effects-Interactions pattern ensures security by performing necessary verifications before updating the contract's state and calling external contracts or sending ether.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.21 (0.663)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.21 (0.498)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.7 (0.331)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.32 (0.309)"
+    ]
+  },
+  {
+    "question": "Why is storing every sensor measurement on a public blockchain impractical?",
+    "answer": "Storing every measurement on a public blockchain is impractical due to several issues:\n\n1. Limited transaction throughput and network congestion - High volume transactions can lead to slow processing times.\n\n2. High transaction fees - These are often expensive, making them prohibitive for low-value transactions like those from sensors.\n\n3. Large and continuously growing ledger storage - This requires significant resources that might not always be available.\n\n4. Delay between measurement and confirmation - There could be delays before a measurement is confirmed and stored.\n\n5. Privacy risks - Public data could reveal sensitive information about locations, habits, or other personal details.\n\nThese factors make it impractical to rely solely on public blockchains for managing sensor data in a smart city environment.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.27 (0.741)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.29 (0.629)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.40 (0.572)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.3 (0.533)"
+    ]
+  },
+  {
+    "question": "Why should full medical records not be stored on the blockchain?",
+    "answer": "Full medical records should not be stored on the blockchain due to several reasons:\n\n1. Highly sensitive personal information contained within medical records makes them unsuitable for direct storage on a blockchain.\n2. All authorized ledger participants could potentially receive replicated copies of these records, leading to potential security risks.\n3. Immutable data in a blockchain is challenging to modify or delete once recorded, which might make it difficult to update or correct errors.\n4. Storing large medical files increases both storage and replication costs, making it impractical for widespread use.\n5. Public or semi-public metadata about patients' relationships and treatment patterns could inadvertently expose sensitive information under certain legal requirements.\n6. Data retention and privacy laws often mandate corrections, deletions, or limited access to medical records, complicating the process of storing them on a blockchain.\n7. Accessing and managing encrypted medical records requires careful handling of decryption keys, especially those held by unauthorized individuals like doctors.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.34 (0.833)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.31 (0.628)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.36 (0.581)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.32 (0.571)"
+    ]
+  },
+  {
+    "question": "What is the blockchain trilemma?",
+    "answer": "The blockchain trilemma involves trade-offs between three key aspects:\n\n1. **Decentralization**: Multiple independent entities participate in maintaining the blockchain.\n\n2. **Security**: Attackers cannot easily alter valid transactions or control the network.\n\n3. **Scalability**: The system must efficiently handle large volumes of transactions without significant delays.\n\nThese goals often conflict with each other, meaning improving one aspect typically comes at the expense of another. For instance, increasing the number of nodes (decentralization) might slow down processing speed (scalability), or adding more computational power (block size) could enhance security but require more energy consumption.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.38 (0.562)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.38 (0.546)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.5 (0.491)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.1 (0.466)"
+    ]
+  },
+  {
+    "question": "Who won the 2022 FIFA World Cup?",
+    "answer": "There is not enough information in the provided context to determine who won the 2022 FIFA World Cup. The context discusses blockchain technology assignments for computer science engineering students at the University of Saida Dr Moulay Taher, including topics such as cryptography, blockchain architecture, and hashing functions like SHA-256. However, it does not provide any details about sports events or their outcomes.",
+    "sources": [
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.1 (0.155)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.26 (0.121)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.6 (0.102)",
+      "BLOCKCHAIN_ASSIGNMENT_MOKHTARI.pdf p.9 (0.094)"
+    ]
+  }
+]

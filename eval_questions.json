@@ -1,0 +1,52 @@
+[
+  {
+    "question": "What is a hash pointer?",
+    "keywords": ["A hash pointer is a reference to data together with the hash of that data"],
+    "answerable": true
+  },
+  {
+    "question": "Why is recalculating hashes not enough to rewrite the blockchain?",
+    "keywords": ["does not automatically make the altered chain accepted by the network"],
+    "answerable": true
+  },
+  {
+    "question": "What is the difference between hashing and encryption?",
+    "keywords": ["SHA-256 is a hash function, not an encryption algorithm"],
+    "answerable": true
+  },
+  {
+    "question": "How many Byzantine nodes can a 10-node PBFT network tolerate?",
+    "keywords": ["can tolerate at most 3 Byzantine nodes"],
+    "answerable": true
+  },
+  {
+    "question": "What is the minimum number of nodes needed to tolerate 4 Byzantine nodes?",
+    "keywords": ["The minimum is therefore 13 replicas"],
+    "answerable": true
+  },
+  {
+    "question": "What is the Checks-Effects-Interactions pattern?",
+    "keywords": ["pattern uses this order"],
+    "answerable": true
+  },
+  {
+    "question": "Why is storing every sensor measurement on a public blockchain impractical?",
+    "keywords": ["not designed to be a high-volume raw sensor database"],
+    "answerable": true
+  },
+  {
+    "question": "Why should full medical records not be stored on the blockchain?",
+    "keywords": ["Storing medical records directly on a blockchain is not recommended"],
+    "answerable": true
+  },
+  {
+    "question": "What is the blockchain trilemma?",
+    "keywords": ["common way to describe a design challenge"],
+    "answerable": true
+  },
+  {
+    "question": "Who won the 2022 FIFA World Cup?",
+    "keywords": [],
+    "answerable": false
+  }
+]
