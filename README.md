@@ -99,11 +99,3 @@ I read the 10 answers generated with the baseline configuration and checked them
 
 The model did not cite source numbers inside the answers. The sources are printed separately by `ask.py` with file name and page number. The small 1.5B model can add statements that are not in the retrieved text, so answers must be verified against the cited pages.
 
-## Limitations
-
-- The retrieved passages may be similar to the question without answering it.
-- The document may not contain the answer.
-- A small language model can misunderstand the context.
-- Broad questions such as "What is this document about?" retrieve poor passages.
-- Tables, equations and scanned pages can be extracted badly.
-- Answers must be verified against the cited pages.
